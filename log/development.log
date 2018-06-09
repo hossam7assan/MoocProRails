@@ -1,0 +1,2489 @@
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (380.2ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (339.7ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DeviseCreateUsers (20180508184810)
+  [1m[35m (346.3ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (274.5ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (265.9ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180508184810')[0m
+  [1m[35m (41.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateAdminUsers (20180508184834)
+  [1m[35m (321.5ms)[0m  [1m[35mCREATE TABLE `admin_users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (274.4ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_admin_users_on_email`  ON `admin_users` (`email`) [0m
+  [1m[35m (321.3ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_admin_users_on_reset_password_token`  ON `admin_users` (`reset_password_token`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180508184834')[0m
+  [1m[35m (109.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveAdminComments (20180508184836)
+  [1m[35m (487.6ms)[0m  [1m[35mCREATE TABLE `active_admin_comments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `namespace` varchar(255), `body` text, `resource_type` varchar(255), `resource_id` bigint, `author_type` varchar(255), `author_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_active_admin_comments_on_resource_type_and_resource_id`  (`resource_type`, `resource_id`),  INDEX `index_active_admin_comments_on_author_type_and_author_id`  (`author_type`, `author_id`)) ENGINE=InnoDB[0m
+  [1m[35m (322.1ms)[0m  [1m[35mCREATE  INDEX `index_active_admin_comments_on_namespace`  ON `active_admin_comments` (`namespace`) [0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180508184836')[0m
+  [1m[35m (42.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2018-05-08 18:49:23', '2018-05-08 18:49:23')[0m
+  [1m[35m (45.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdminUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `admin_users` WHERE `admin_users`.`email` = BINARY 'admin@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `admin_users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('admin@example.com', '$2a$11$ezNIz84ihhM/uIR2xXyn3unsI7cCzAvXNuhhCFKUgqIIU3u3PMOEq', '2018-05-08 18:49:31', '2018-05-08 18:49:31')[0m
+  [1m[35m (73.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2018-05-08 20:50:05 +0200
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (3.6ms)
+Completed 200 OK in 17ms (Views: 9.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-08 20:50:11 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (0.9ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application (117.6ms)
+Completed 200 OK in 5128ms (Views: 5053.0ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-08 20:50:22 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XTEgLezlUlE1i6d50u1ANzRNYNwcJ31BV9Zze3b/XbFybZyWd4M7JSa2ZZiYqzm4R3jbPJzHLHi8Dxqp/Aoy1Q==", "user"=>{"email"=>"hoss@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'hoss@example.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 43ms (ActiveRecord: 0.8ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XTEgLezlUlE1i6d50u1ANzRNYNwcJ31BV9Zze3b/XbFybZyWd4M7JSa2ZZiYqzm4R3jbPJzHLHi8Dxqp/Aoy1Q==", "user"=>{"email"=>"hoss@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 280ms (Views: 132.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-08 20:50:24 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"B/aYDSUfIdvLDT/t2s+jvSooUpB0CzXd/K5QxHsjPOsoqiS2vnlIr9gw/QyQidoyWR3pcPTrZOQXdzkW8dZTjw==", "user"=>{"email"=>"hoss@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'hoss@example.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.4ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"B/aYDSUfIdvLDT/t2s+jvSooUpB0CzXd/K5QxHsjPOsoqiS2vnlIr9gw/QyQidoyWR3pcPTrZOQXdzkW8dZTjw==", "user"=>{"email"=>"hoss@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 293ms (Views: 144.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-08 20:50:39 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EEgYoiTsczhbHw8Xi5vZ3aKaluSVNmXzwMS1nC/acME/FKQZv4oaTEgizfbB3aBS0a8tBBXWNMorHdxOpS8fpQ==", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@example.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.3ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EEgYoiTsczhbHw8Xi5vZ3aKaluSVNmXzwMS1nC/acME/FKQZv4oaTEgizfbB3aBS0a8tBBXWNMorHdxOpS8fpQ==", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (2.6ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 298ms (Views: 154.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-08 20:51:26 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"L3MqUvTNurGJXC41O/AQ9uppus0TVS9r6SpRq+EK08wAL5bpb6vTxZph7NRxtml5mVwBLZO1flIC8zh5a/+8qA==", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@example.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.6ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"L3MqUvTNurGJXC41O/AQ9uppus0TVS9r6SpRq+EK08wAL5bpb6vTxZph7NRxtml5mVwBLZO1flIC8zh5a/+8qA==", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (0.8ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 273ms (Views: 92.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-08 20:51:40 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/registrations/new.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 110ms (Views: 108.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-05-08 20:51:55 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JbnMw7qAqPC0FXkl00yjW9pUTVcnNhLLHH8CXTtn+VsOPjYAJI5lp32cCxo1LGx6FoxBE+MQknKGZPnk3xS1lQ==", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'admin@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('admin@example.com', '$2a$11$mErZr.GgJ9trn7Rr/hYah.bPNb91qQtXZEE.dyoOaUebjUxPHIVne', '2018-05-08 18:51:55', '2018-05-08 18:51:55')[0m
+  [1m[35m (41.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (23.8ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2018-05-08 18:51:55', `last_sign_in_at` = '2018-05-08 18:51:55', `current_sign_in_ip` = '127.0.0.1', `last_sign_in_ip` = '127.0.0.1' WHERE `users`.`id` = 1[0m
+  [1m[35m (37.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 263ms (ActiveRecord: 103.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-08 20:51:55 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.7ms)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-08 20:52:00 +0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 57ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-08 20:52:00 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2018-05-08 20:52:27 +0200
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2018-05-08 20:52:27 +0200
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/shared/_links.erb (1.6ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (183.2ms)
+Completed 200 OK in 471ms (Views: 449.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2018-05-08 20:52:43 +0200
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vdCUv1I1W60dhogx1MfEc4rGnvCgQgKaktmN3NPYB8KSjCgEyVMy2Q67StCegb38+fMlECCiU6N5AOQOWS1opg==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`email` = 'admin@example.com' ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `admin_users` SET `current_sign_in_at` = '2018-05-08 18:52:43', `last_sign_in_at` = '2018-05-08 18:52:43', `current_sign_in_ip` = '127.0.0.1', `last_sign_in_ip` = '127.0.0.1', `sign_in_count` = 1, `updated_at` = '2018-05-08 18:52:43' WHERE `admin_users`.`id` = 1[0m
+  [1m[35m (64.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 225ms (ActiveRecord: 65.4ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2018-05-08 20:52:43 +0200
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.3ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/page/index.html.arb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/page/index.html.arb (93.4ms)
+Completed 200 OK in 128ms (Views: 95.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 00:48:38 +0200
+  [1m[35m (16.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (15.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 35ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-20 00:48:55 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (1.0ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application (81.4ms)
+Completed 200 OK in 931ms (Views: 707.1ms | ActiveRecord: 156.3ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-20 00:49:25 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jSDYk4nshk+bHg8IAH4Z75SoLpOD6pP3PZmWFkrp2UIRpMOfZ22aKfDJEsjWah5fafhaCKZ9Js29ZxYfmsTWFA==", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@example.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (29.5ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2018-05-19 22:49:25', `sign_in_count` = 2, `updated_at` = '2018-05-19 22:49:25' WHERE `users`.`id` = 1[0m
+  [1m[35m (35.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 517ms (ActiveRecord: 66.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 00:49:25 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.5ms)
+Completed 200 OK in 8ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2018-05-20 00:49:34 +0200
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2018-05-20 00:49:34 +0200
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/shared/_links.erb (1.2ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (97.9ms)
+Completed 200 OK in 445ms (Views: 302.9ms | ActiveRecord: 124.2ms)
+
+
+Started POST "/admin/login" for 127.0.0.1 at 2018-05-20 00:49:49 +0200
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3wINCpOFNlXYSP8jZ09AhQ7vScqh+Dx2KajkhxxX+RbDIFmqZRsBogc8GJeWhLDQKu+54h7HR/YMuYWDdwMm6w==", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Login"}
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`email` = 'admin@example.com' ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE `admin_users` SET `current_sign_in_at` = '2018-05-19 22:49:49', `sign_in_count` = 2, `updated_at` = '2018-05-19 22:49:49' WHERE `admin_users`.`id` = 1[0m
+  [1m[35m (86.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 243ms (ActiveRecord: 87.5ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2018-05-20 00:49:49 +0200
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.5ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/page/index.html.arb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/page/index.html.arb (94.1ms)
+Completed 200 OK in 127ms (Views: 95.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/admin/logout" for 127.0.0.1 at 2018-05-20 00:50:10 +0200
+Processing by ActiveAdmin::Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"6QKH56qQGpPCzdWVDOhE0L7eNoU06cXDg82ohvcF61aYvDzVS4m6hN1LW2dAZE9eDSu+OoV7wpF8AI52mrGDww=="}
+  [1m[36mAdminUser Load (0.4ms)[0m  [1m[34mSELECT  `admin_users`.* FROM `admin_users` WHERE `admin_users`.`id` = 1 ORDER BY `admin_users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin
+Completed 302 Found in 35ms (ActiveRecord: 1.3ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2018-05-20 00:50:10 +0200
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2018-05-20 00:50:10 +0200
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/shared/_links.erb (1.7ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/activeadmin-1.0.0/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (20.1ms)
+Completed 200 OK in 109ms (Views: 107.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/register" for 127.0.0.1 at 2018-05-20 01:04:03 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/admin/register"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-05-20 01:04:14 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/register" for 127.0.0.1 at 2018-05-20 01:04:33 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/register"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-20 01:04:45 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/sessions/new.html.erb within layouts/application (7.7ms)
+Completed 200 OK in 134ms (Views: 132.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-20 01:04:47 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (2.1ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/registrations/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 106ms (Views: 104.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-20 01:07:17 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/shared/_links.html.erb (0.8ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/devise-4.4.3/app/views/devise/registrations/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 114ms (Views: 112.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-20 01:07:38 +0200
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (1.0ms)
+  Rendered users/registrations/new.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 372ms (Views: 337.9ms | ActiveRecord: 2.3ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddNameToUsers (20180519231006)
+  [1m[35m (1056.8ms)[0m  [1m[35mALTER TABLE `users` ADD `name` varchar(255)[0m
+  [1m[35m (891.5ms)[0m  [1m[35mALTER TABLE `users` ADD `date_of_birth` datetime[0m
+  [1m[35m (946.4ms)[0m  [1m[35mALTER TABLE `users` ADD `gender` varchar(255) DEFAULT 'm'[0m
+  [1m[35m (936.5ms)[0m  [1m[35mALTER TABLE `users` ADD `picture` varchar(255)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180519231006')[0m
+  [1m[35m (41.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-20 01:38:25 +0200
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (0.9ms)
+  Rendered users/registrations/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 378ms (Views: 337.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-20 01:38:31 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (7.7ms)
+  Rendered users/sessions/new.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 168ms (Views: 164.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-20 01:38:40 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9oHUiP8YAbasWU/E/yWMjPieBy+CDpOiBF+B9bcXvQZx9tIstqOAtQ1KDjsplZlcAQkyJ7+FhSxEtRbjXcChfA==", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@example.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 152ms (ActiveRecord: 0.3ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9oHUiP8YAbasWU/E/yWMjPieBy+CDpOiBF+B9bcXvQZx9tIstqOAtQ1KDjsplZlcAQkyJ7+FhSxEtRbjXcChfA==", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (2.4ms)
+  Rendered users/sessions/new.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 253ms (Views: 116.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-20 01:38:48 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ghhhc8lZTH1DAbbV9f/dh4uEANtIawKWUNlqvueLr3BKEYT26l5nvqXXFANkmWA9uMChXJx2GvVaum2nxKON9g==", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'admin@example.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2018-05-19 23:38:48', `last_sign_in_at` = '2018-05-19 22:49:25', `sign_in_count` = 3, `updated_at` = '2018-05-19 23:38:48' WHERE `users`.`id` = 1[0m
+  [1m[35m (46.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 212ms (ActiveRecord: 48.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 01:38:48 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (3.3ms)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-20 01:39:41 +0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 01:39:41 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (4.6ms)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2018-05-20 01:39:44 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 01:39:52 +0200
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (38.7ms)
+Completed 200 OK in 151ms (Views: 148.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 01:51:46 +0200
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 33ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `for' for #<Devise::ParameterSanitizer:0x00007fcda026c918>):
+  
+app/controllers/application_controller.rb:9:in `configure_permitted_parameters'
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 01:54:37 +0200
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 3.6ms)
+
+
+  
+NoMethodError (undefined method `for' for #<Devise::ParameterSanitizer:0x00005632640b6138>):
+  
+app/controllers/application_controller.rb:9:in `configure_permitted_parameters'
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 01:56:35 +0200
+  
+SyntaxError (/home/hossam/Desktop/ruby/MoocProRails/moocProj/app/controllers/application_controller.rb:10: syntax error, unexpected ',', expecting ')'
+..._sanitizer.**permit**(:sign_up, keys: [:name, :email, :passw...
+...                              ^):
+  
+app/controllers/application_controller.rb:10: syntax error, unexpected ',', expecting ')'
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 01:58:16 +0200
+  
+SyntaxError (/home/hossam/Desktop/ruby/MoocProRails/moocProj/app/controllers/application_controller.rb:10: syntax error, unexpected '{', expecting keyword_end
+...anitizer.**permit**(:sign_up) { keys: [:name, :email, :passw...
+...                              ^
+/home/hossam/Desktop/ruby/MoocProRails/moocProj/app/controllers/application_controller.rb:10: syntax error, unexpected '}', expecting keyword_end
+...s: [:name, :email, :password] } 
+...                              ^):
+  
+app/controllers/application_controller.rb:10: syntax error, unexpected '{', expecting keyword_end
+app/controllers/application_controller.rb:10: syntax error, unexpected '}', expecting keyword_end
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 01:58:45 +0200
+  
+SyntaxError (/home/hossam/Desktop/ruby/MoocProRails/moocProj/app/controllers/application_controller.rb:10: syntax error, unexpected '{', expecting ')'
+...sanitizer.**permit**(:sign_up { keys: [:name, :email, :passw...
+...                              ^
+/home/hossam/Desktop/ruby/MoocProRails/moocProj/app/controllers/application_controller.rb:10: syntax error, unexpected '}', expecting ')'
+...s: [:name, :email, :password] } )
+...                              ^
+/home/hossam/Desktop/ruby/MoocProRails/moocProj/app/controllers/application_controller.rb:12: syntax error, unexpected keyword_end, expecting ')'
+        end
+        ^~~):
+  
+app/controllers/application_controller.rb:10: syntax error, unexpected '{', expecting ')'
+app/controllers/application_controller.rb:10: syntax error, unexpected '}', expecting ')'
+app/controllers/application_controller.rb:12: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 01:59:18 +0200
+  
+SyntaxError (/home/hossam/Desktop/ruby/MoocProRails/moocProj/app/controllers/application_controller.rb:10: syntax error, unexpected '(', expecting keyword_end
+...anitizer.**permit**(:sign_up) ( keys: [:name, :email, :passw...
+...                              ^
+/home/hossam/Desktop/ruby/MoocProRails/moocProj/app/controllers/application_controller.rb:10: syntax error, unexpected ')', expecting keyword_end
+...s: [:name, :email, :password] ) 
+...                              ^):
+  
+app/controllers/application_controller.rb:10: syntax error, unexpected '(', expecting keyword_end
+app/controllers/application_controller.rb:10: syntax error, unexpected ')', expecting keyword_end
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 01:59:49 +0200
+  
+SyntaxError (/home/hossam/Desktop/ruby/MoocProRails/moocProj/app/controllers/application_controller.rb:10: syntax error, unexpected ',', expecting ')'
+..._sanitizer.**permit**(:sign_up, keys: [:name]) 
+...                              ^):
+  
+app/controllers/application_controller.rb:10: syntax error, unexpected ',', expecting ')'
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 02:01:13 +0200
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 1.4ms)
+
+
+  
+NoMethodError (undefined method `for' for #<Devise::ParameterSanitizer:0x00005632658966b8>):
+  
+app/controllers/application_controller.rb:11:in `configure_permitted_parameters'
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 02:01:36 +0200
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (12.6ms)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `day' for "m":String):
+    10:         <%= f.date_select :date_of_birth %></div>
+    11: 
+    12:   <div><%= f.label :gender %><br />
+    13:         <%= f.date_select :gender %></div>
+    14:   
+    15:   <div class="field">
+    16:     <%= f.label :email %><br />
+  
+app/views/users/registrations/edit.html.erb:13:in `block in _app_views_users_registrations_edit_html_erb__2550994739993664755_69891768641080'
+app/views/users/registrations/edit.html.erb:3:in `_app_views_users_registrations_edit_html_erb__2550994739993664755_69891768641080'
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 02:06:30 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (15.9ms)
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `is_female' for #<User:0x0000563263acfa08>):
+     9:   <div><%= f.label :date_of_birth %><br />
+    10:         <%= f.date_select :date_of_birth %></div>
+    11: 
+    12:         <div><%= f.check_box :is_female, {}, true %> <%= f.label :is_female, "Female" %> </div>
+    13:         <div><%= f.check_box :is_female, {}, false %> <%= f.label :is_female, "Male" %> </div>
+    14:   
+    15:   <div class="field">
+  
+app/views/users/registrations/edit.html.erb:12:in `block in _app_views_users_registrations_edit_html_erb__2550994739993664755_47387210175740'
+app/views/users/registrations/edit.html.erb:3:in `_app_views_users_registrations_edit_html_erb__2550994739993664755_47387210175740'
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddNameToUsers (20180519231006)
+  [1m[35m (1067.0ms)[0m  [1m[35mALTER TABLE `users` DROP `picture`[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE `users` DROP `is_female`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddNameToUsers (20180519231006)
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE `users` DROP `picture`[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 02:08:32 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (20.3ms)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `is_female' for #<User:0x00007f21e45c2f08>):
+     9:   <div><%= f.label :date_of_birth %><br />
+    10:         <%= f.date_select :date_of_birth %></div>
+    11: 
+    12:         <div><%= f.check_box :is_female, {}, true %> <%= f.label :is_female, "Female" %> </div>
+    13:         <div><%= f.check_box :is_female, {}, false %> <%= f.label :is_female, "Male" %> </div>
+    14:   
+    15:   <div class="field">
+  
+app/views/users/registrations/edit.html.erb:12:in `block in _app_views_users_registrations_edit_html_erb__2550994739993664755_69891770930780'
+app/views/users/registrations/edit.html.erb:3:in `_app_views_users_registrations_edit_html_erb__2550994739993664755_69891770930780'
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 02:10:46 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (6.9ms)
+Completed 200 OK in 388ms (Views: 371.3ms | ActiveRecord: 1.4ms)
+
+
+Started PUT "/users" for 127.0.0.1 at 2018-05-20 02:11:45 +0200
+Processing by Devise::RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7S2zZUA4mFWJsm46+kX1hYdv2mSmPqgouG9EsIpVHQdI8w3k2MH+Z/+8cJdlBsBtsIrLJmkHMoyFoAQqUwPZMw==", "user"=>{"name"=>"hossam", "date_of_birth(1i)"=>"2013", "date_of_birth(2i)"=>"1", "date_of_birth(3i)"=>"12", "gender"=>"m", "email"=>"hoss@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "current_password"=>"[FILTERED]"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Unpermitted parameters: :gender, :password_confirmation
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'hoss@example.com' AND (`users`.`id` != 1) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE `users` SET `encrypted_password` = '$2a$11$jxQoB3Mv/2FFmpdECcaYFui9gQsx7DWbI4LCcrQWJ8fpTRhJcPBQm', `name` = 'hossam', `email` = 'hoss@example.com', `date_of_birth` = '2013-01-12 00:00:00', `updated_at` = '2018-05-20 00:11:45' WHERE `users`.`id` = 1[0m
+  [1m[35m (65.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 427ms (ActiveRecord: 67.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 02:11:45 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-20 02:12:25 +0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 02:12:25 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.8ms)
+Completed 200 OK in 7ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-20 02:12:32 +0200
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 02:12:32 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 02:12:40 +0200
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (8.7ms)
+Completed 200 OK in 110ms (Views: 107.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 02:17:27 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.4ms)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 02:18:25 +0200
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 118ms (Views: 114.7ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2018-05-20 02:18:29 +0200
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"0ADLsUVjOEavqcDLcIkjQWbkRu66EWeZ2VOnB4AsQ3t13nUw3ZpedNmn3mbvyhapUQFXrHUo/T3knOedWXqHTw=="}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 02:18:29 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-20 02:18:36 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (1.5ms)
+  Rendered users/registrations/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 106ms (Views: 102.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-20 02:44:52 +0200
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (1.4ms)
+  Rendered users/registrations/new.html.erb within layouts/application (33.9ms)
+Completed 200 OK in 585ms (Views: 544.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2018-05-20 02:44:59 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (1.1ms)
+  Rendered users/sessions/new.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 124ms (Views: 122.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-20 02:45:01 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"a61FZlU35YzSNR8Tl65mhd5SHqNVvZ+EEhZ/o10CZE0Im/SunObb4S5AbdtOieYMaHotC6hgmBdgDGdLCqALBg==", "user"=>{"email"=>"hoss@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'hoss@example.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 401 Unauthorized in 160ms (ActiveRecord: 0.5ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"a61FZlU35YzSNR8Tl65mhd5SHqNVvZ+EEhZ/o10CZE0Im/SunObb4S5AbdtOieYMaHotC6hgmBdgDGdLCqALBg==", "user"=>{"email"=>"hoss@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (0.9ms)
+  Rendered users/sessions/new.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 247ms (Views: 108.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2018-05-20 02:45:08 +0200
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"gj9g+y0L7T5DyoQHxlmk/C7hC7OxSBzCUIsxXIciW7IJxKGa9tbIzzbrY0AHu4dViHAxv3pSwcIIUDcJPxFrHQ==", "user"=>{"email"=>"hoss@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`email` = 'hoss@example.com' ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `users` SET `current_sign_in_at` = '2018-05-20 00:45:08', `last_sign_in_at` = '2018-05-19 23:38:48', `sign_in_count` = 4, `updated_at` = '2018-05-20 00:45:08' WHERE `users`.`id` = 1[0m
+  [1m[35m (44.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 208ms (ActiveRecord: 45.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 02:45:08 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.6ms)
+Completed 200 OK in 9ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 02:45:17 +0200
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (10.8ms)
+Completed 200 OK in 112ms (Views: 108.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/show" for 127.0.0.1 at 2018-05-20 02:47:41 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/show"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/users" for 127.0.0.1 at 2018-05-20 02:52:54 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `ar_internal_metadata`.`value` FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (929.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS `moocProj_development`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (42.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS `moocProj_test`[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (514.1ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL PRIMARY KEY) ENGINE=InnoDB[0m
+  [1m[35m (342.1ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(255) NOT NULL PRIMARY KEY, `value` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to DeviseCreateUsers (20180508184810)
+  [1m[35m (353.2ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (265.5ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_email`  ON `users` (`email`) [0m
+  [1m[35m (277.0ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_users_on_reset_password_token`  ON `users` (`reset_password_token`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180508184810')[0m
+  [1m[35m (41.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateAdminUsers (20180508184834)
+  [1m[35m (343.4ms)[0m  [1m[35mCREATE TABLE `admin_users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `email` varchar(255) DEFAULT '' NOT NULL, `encrypted_password` varchar(255) DEFAULT '' NOT NULL, `reset_password_token` varchar(255), `reset_password_sent_at` datetime, `remember_created_at` datetime, `sign_in_count` int DEFAULT 0 NOT NULL, `current_sign_in_at` datetime, `last_sign_in_at` datetime, `current_sign_in_ip` varchar(255), `last_sign_in_ip` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (332.5ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_admin_users_on_email`  ON `admin_users` (`email`) [0m
+  [1m[35m (365.6ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_admin_users_on_reset_password_token`  ON `admin_users` (`reset_password_token`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180508184834')[0m
+  [1m[35m (109.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveAdminComments (20180508184836)
+  [1m[35m (446.8ms)[0m  [1m[35mCREATE TABLE `active_admin_comments` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `namespace` varchar(255), `body` text, `resource_type` varchar(255), `resource_id` bigint, `author_type` varchar(255), `author_id` bigint, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_active_admin_comments_on_resource_type_and_resource_id`  (`resource_type`, `resource_id`),  INDEX `index_active_admin_comments_on_author_type_and_author_id`  (`author_type`, `author_id`)) ENGINE=InnoDB[0m
+  [1m[35m (254.7ms)[0m  [1m[35mCREATE  INDEX `index_active_admin_comments_on_namespace`  ON `active_admin_comments` (`namespace`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180508184836')[0m
+  [1m[35m (43.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddNameToUsers (20180519231006)
+  [1m[35m (733.4ms)[0m  [1m[35mALTER TABLE `users` ADD `name` varchar(255)[0m
+  [1m[35m (700.5ms)[0m  [1m[35mALTER TABLE `users` ADD `date_of_birth` datetime[0m
+  [1m[35m (634.9ms)[0m  [1m[35mALTER TABLE `users` ADD `gender` varchar(255) DEFAULT 'm'[0m
+  [1m[35m (733.9ms)[0m  [1m[35mALTER TABLE `users` ADD `picture` varchar(255)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180519231006')[0m
+  [1m[35m (54.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2018-05-20 14:20:59', '2018-05-20 14:20:59')[0m
+  [1m[35m (48.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for 127.0.0.1 at 2018-05-20 16:21:40 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2018-05-20 16:21:45 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (0.8ms)
+  Rendered users/registrations/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 211ms (Views: 176.6ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2018-05-20 16:22:09 +0200
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Os3wi9B9OkmPnXadOwgFuWcXWFlTG4o/VcUY7B7Xwxn0U8vKZ6a+g2V2jCesTi0xLG/VfaCHDVf6C1S4PXl7/g==", "user"=>{"email"=>"hoss@example.com", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f47fa940478 @tempfile=#<Tempfile:/tmp/RackMultipart20180520-21784-1lwm3km.png>, @original_filename="53.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[picture]\"; filename=\"53.png\"\r\nContent-Type: image/png\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+Unpermitted parameters: :picture, :password_confirmation
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'hoss@example.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `users` (`email`, `encrypted_password`, `created_at`, `updated_at`) VALUES ('hoss@example.com', '$2a$11$wNxkk5K1a0mfDyz7J08nyuEuKwIJposGNgSXYx9jwRx2JGDGVrM0.', '2018-05-20 14:22:09', '2018-05-20 14:22:09')[0m
+  [1m[35m (56.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2018-05-20 14:22:09', `last_sign_in_at` = '2018-05-20 14:22:09', `current_sign_in_ip` = '127.0.0.1', `last_sign_in_ip` = '127.0.0.1' WHERE `users`.`id` = 1[0m
+  [1m[35m (51.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 260ms (ActiveRecord: 108.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 16:22:09 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.6ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/edit" for 127.0.0.1 at 2018-05-20 16:22:48 +0200
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 133ms (Views: 130.3ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/users" for 127.0.0.1 at 2018-05-20 16:23:26 +0200
+Processing by Devise::RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"FOJNlV0LN1Koy2KURvHolPiTluhSh5vDx+OgyRK+5DrafHbU6tCzmEIgmC7Rt8Acs+sbzKEbHKtoLeydMRBc3Q==", "user"=>{"name"=>"hossam", "date_of_birth(1i)"=>"2018", "date_of_birth(2i)"=>"5", "date_of_birth(3i)"=>"20", "gender"=>"m", "email"=>"hoss@example.com", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f47fa943308 @tempfile=#<Tempfile:/tmp/RackMultipart20180520-21784-csmjr8.png>, @original_filename="53.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[picture]\"; filename=\"53.png\"\r\nContent-Type: image/png\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "current_password"=>"[FILTERED]"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Unpermitted parameters: :gender, :picture, :password_confirmation
+  Rendering users/registrations/edit.html.erb within layouts/application
+  Rendered users/registrations/edit.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 248ms (Views: 100.9ms | ActiveRecord: 0.9ms)
+
+
+Started PUT "/users" for 127.0.0.1 at 2018-05-20 16:23:46 +0200
+Processing by Devise::RegistrationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kyeOjWk+Eddk6EQvvxI1slBScRMqIsH49h0lrGpWAoNdubXM3uWVHY4DvpUoVB06Gyr8N9m+RpBZ02n4Sfi6ZA==", "user"=>{"name"=>"hossam", "date_of_birth(1i)"=>"2018", "date_of_birth(2i)"=>"5", "date_of_birth(3i)"=>"20", "gender"=>"m", "email"=>"hoss@example.com", "picture"=>#<ActionDispatch::Http::UploadedFile:0x00007f47fa665aa0 @tempfile=#<Tempfile:/tmp/RackMultipart20180520-21784-g6o813.png>, @original_filename="53.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"user[picture]\"; filename=\"53.png\"\r\nContent-Type: image/png\r\n">, "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "current_password"=>"[FILTERED]"}, "commit"=>"Update"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+Unpermitted parameters: :gender, :picture, :password_confirmation
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE `users` SET `name` = 'hossam', `date_of_birth` = '2018-05-20 00:00:00', `updated_at` = '2018-05-20 14:23:46' WHERE `users`.`id` = 1[0m
+  [1m[35m (100.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 250ms (ActiveRecord: 101.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-20 16:23:46 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 21:13:37 +0200
+  [1m[35m (62.0ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.1.6) lib/active_record/migration.rb:576:in `check_pending!'
+activerecord (5.1.6) lib/active_record/migration.rb:553:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateCourses (20180520190234)
+  [1m[35m (337.5ms)[0m  [1m[35mCREATE TABLE `courses` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `title` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180520190234')[0m
+  [1m[35m (50.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateLectures (20180520190651)
+  [1m[35m (343.3ms)[0m  [1m[35mCREATE TABLE `lectures` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `content` varchar(255), `course_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180520190651')[0m
+  [1m[35m (109.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 21:14:12 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 2718ms (Views: 2707.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2018-05-20 21:14:33 +0200
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT `courses`.* FROM `courses`[0m
+  Rendered courses/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 107ms (Views: 105.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/courses/new" for 127.0.0.1 at 2018-05-20 21:14:39 +0200
+Processing by CoursesController#new as HTML
+  Rendering courses/new.html.erb within layouts/application
+  Rendered courses/_form.html.erb (23.3ms)
+  Rendered courses/new.html.erb within layouts/application (24.8ms)
+Completed 200 OK in 138ms (Views: 132.8ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/courses" for 127.0.0.1 at 2018-05-20 21:14:50 +0200
+Processing by CoursesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"A5KicGGp/1aw+tasoz0trtbR8Vzqwiyw5KgINgTzO16Wo2Awv+XnhIBzvs1uGBb3DVWnpG8CKdMqJNiuZ6VYFw==", "course"=>{"title"=>"C++"}, "commit"=>"Create Course"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `courses` (`title`, `created_at`, `updated_at`) VALUES ('C++', '2018-05-20 19:14:50', '2018-05-20 19:14:50')[0m
+  [1m[35m (76.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/courses/1
+Completed 302 Found in 87ms (ActiveRecord: 77.2ms)
+
+
+Started GET "/courses/1" for 127.0.0.1 at 2018-05-20 21:14:50 +0200
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (1.1ms)[0m  [1m[34mSELECT  `courses`.* FROM `courses` WHERE `courses`.`id` = 1 LIMIT 1[0m
+  Rendering courses/show.html.erb within layouts/application
+  Rendered courses/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 124ms (Views: 98.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/courses/1/edit" for 127.0.0.1 at 2018-05-20 21:15:03 +0200
+Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  `courses`.* FROM `courses` WHERE `courses`.`id` = 1 LIMIT 1[0m
+  Rendering courses/edit.html.erb within layouts/application
+  Rendered courses/_form.html.erb (1.5ms)
+  Rendered courses/edit.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 112ms (Views: 110.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/courses" for 127.0.0.1 at 2018-05-20 21:15:05 +0200
+Processing by CoursesController#index as HTML
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT `courses`.* FROM `courses`[0m
+  Rendered courses/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 91ms (Views: 89.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 21:16:37 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 96ms (Views: 95.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/lectures/new" for 127.0.0.1 at 2018-05-20 21:16:42 +0200
+Processing by LecturesController#new as HTML
+  Rendering lectures/new.html.erb within layouts/application
+  Rendered lectures/_form.html.erb (16.2ms)
+  Rendered lectures/new.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 126ms (Views: 120.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/lectures/new" for 127.0.0.1 at 2018-05-20 21:27:23 +0200
+Processing by LecturesController#new as HTML
+  Rendering lectures/new.html.erb within layouts/application
+  Rendered lectures/_form.html.erb (3.0ms)
+  Rendered lectures/new.html.erb within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 2, expected 4..6)):
+    18: 
+    19:   <div class="field">
+    20:     <%= form.label :course_id %>
+    21:     <%= form.collection_select :course_id, id: :lecture_course_id %>
+    22:   </div>
+    23: 
+    24:   <div class="actions">
+  
+app/views/lectures/_form.html.erb:21:in `block in _app_views_lectures__form_html_erb___1280606068149517880_70139116773960'
+app/views/lectures/_form.html.erb:1:in `_app_views_lectures__form_html_erb___1280606068149517880_70139116773960'
+app/views/lectures/new.html.erb:3:in `_app_views_lectures_new_html_erb__310480982344536293_70139116797880'
+Started GET "/lectures/new" for 127.0.0.1 at 2018-05-20 21:29:59 +0200
+Processing by LecturesController#new as HTML
+  Rendering lectures/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT `courses`.* FROM `courses` ORDER BY `courses`.`title` ASC[0m
+  Rendered lectures/_form.html.erb (22.3ms)
+  Rendered lectures/new.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 131ms (Views: 130.2ms | ActiveRecord: 0.4ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to InstallCommontator (20180520200856)
+  [1m[35m (340.5ms)[0m  [1m[35mCREATE TABLE `commontator_comments` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `creator_type` varchar(255), `creator_id` int, `editor_type` varchar(255), `editor_id` int, `thread_id` int NOT NULL, `body` text NOT NULL, `deleted_at` datetime, `cached_votes_up` int DEFAULT 0, `cached_votes_down` int DEFAULT 0, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (310.3ms)[0m  [1m[35mCREATE  INDEX `index_commontator_comments_on_c_id_and_c_type_and_t_id`  ON `commontator_comments` (`creator_id`, `creator_type`, `thread_id`) [0m
+  [1m[35m (287.7ms)[0m  [1m[35mCREATE  INDEX `index_commontator_comments_on_thread_id_and_created_at`  ON `commontator_comments` (`thread_id`, `created_at`) [0m
+  [1m[35m (377.0ms)[0m  [1m[35mCREATE  INDEX `index_commontator_comments_on_cached_votes_up`  ON `commontator_comments` (`cached_votes_up`) [0m
+  [1m[35m (276.8ms)[0m  [1m[35mCREATE  INDEX `index_commontator_comments_on_cached_votes_down`  ON `commontator_comments` (`cached_votes_down`) [0m
+  [1m[35m (343.8ms)[0m  [1m[35mCREATE TABLE `commontator_subscriptions` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `subscriber_type` varchar(255) NOT NULL, `subscriber_id` int NOT NULL, `thread_id` int NOT NULL, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (343.2ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_commontator_subscriptions_on_s_id_and_s_type_and_t_id`  ON `commontator_subscriptions` (`subscriber_id`, `subscriber_type`, `thread_id`) [0m
+  [1m[35m (343.4ms)[0m  [1m[35mCREATE  INDEX `index_commontator_subscriptions_on_thread_id`  ON `commontator_subscriptions` (`thread_id`) [0m
+  [1m[35m (344.0ms)[0m  [1m[35mCREATE TABLE `commontator_threads` (`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY, `commontable_type` varchar(255), `commontable_id` int, `closed_at` datetime, `closer_type` varchar(255), `closer_id` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (311.2ms)[0m  [1m[35mCREATE UNIQUE INDEX `index_commontator_threads_on_c_id_and_c_type`  ON `commontator_threads` (`commontable_id`, `commontable_type`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180520200856')[0m
+  [1m[35m (40.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/lectures/new" for 127.0.0.1 at 2018-05-20 22:27:03 +0200
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by LecturesController#new as HTML
+  Rendering lectures/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT `courses`.* FROM `courses` ORDER BY `courses`.`title` ASC[0m
+  Rendered lectures/_form.html.erb (26.9ms)
+  Rendered lectures/new.html.erb within layouts/application (29.2ms)
+Completed 200 OK in 2440ms (Views: 2417.6ms | ActiveRecord: 3.3ms)
+
+
+Started POST "/lectures" for 127.0.0.1 at 2018-05-20 22:27:24 +0200
+Processing by LecturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Sa8ll05x9SQHmwMKkVKWrWsDNXo6X9bYApKgDnajd5WHMR7W+apx7u1w+bAGFL4lIHu4XsnDUbCtXOxaVQ3Pcg==", "lecture"=>{"content"=>"kalam 7elo", "course_id"=>"1"}, "commit"=>"Create Lecture"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT  `courses`.* FROM `courses` WHERE `courses`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `lectures` (`content`, `course_id`, `created_at`, `updated_at`) VALUES ('kalam 7elo', 1, '2018-05-20 20:27:25', '2018-05-20 20:27:25')[0m
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[36mCommontator::Thread Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 1 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO `commontator_threads` (`commontable_type`, `commontable_id`, `created_at`, `updated_at`) VALUES ('Lecture', 1, '2018-05-20 20:27:25', '2018-05-20 20:27:25')[0m
+  [1m[35m (51.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/lectures/1
+Completed 302 Found in 269ms (ActiveRecord: 55.1ms)
+
+
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 22:27:25 +0200
+Processing by LecturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  Rendering lectures/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Rendered lectures/show.html.erb within layouts/application (32.7ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 2.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `thread' for nil:NilClass):
+    10:   <%= @lecture.course_id %>
+    11: </p>
+    12: 
+    13: <%= commontator_thread(@commontable) %>
+    14: 
+    15: <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
+    16: <%= link_to 'Back', lectures_path %>
+  
+app/views/lectures/show.html.erb:13:in `_app_views_lectures_show_html_erb___3682652969306718766_69856054493620'
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 22:30:09 +0200
+Processing by LecturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  Rendering lectures/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mCommontator::Thread Load (0.4ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 1 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[36mCommontator::Subscription Load (0.3ms)[0m  [1m[34mSELECT  `commontator_subscriptions`.* FROM `commontator_subscriptions` WHERE `commontator_subscriptions`.`subscriber_id` = 1 AND `commontator_subscriptions`.`subscriber_type` = 'User' AND `commontator_subscriptions`.`thread_id` = 1 ORDER BY `commontator_subscriptions`.`id` ASC LIMIT 1[0m
+  [1m[35m (22.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1[0m
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/shared/_thread.html.erb (93.1ms)
+  Rendered lectures/show.html.erb within layouts/application (104.9ms)
+Completed 200 OK in 280ms (Views: 252.0ms | ActiveRecord: 26.2ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 22:30:19 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (3.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 142ms (Views: 137.5ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 22:30:22 +0200
+Processing by LecturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLecture Load (6.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  Rendering lectures/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mCommontator::Thread Load (0.8ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 1 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[36mLecture Load (0.6ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[36mCommontator::Subscription Load (0.5ms)[0m  [1m[34mSELECT  `commontator_subscriptions`.* FROM `commontator_subscriptions` WHERE `commontator_subscriptions`.`subscriber_id` = 1 AND `commontator_subscriptions`.`subscriber_type` = 'User' AND `commontator_subscriptions`.`thread_id` = 1 ORDER BY `commontator_subscriptions`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1[0m
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/shared/_thread.html.erb (16.9ms)
+  Rendered lectures/show.html.erb within layouts/application (32.4ms)
+Completed 200 OK in 226ms (Views: 204.1ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/commontator/threads/1" for 127.0.0.1 at 2018-05-20 22:30:28 +0200
+Processing by Commontator::ThreadsController#show as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mCommontator::Thread Load (0.5ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`id` = 1 LIMIT 1[0m
+  [1m[36mLecture Load (0.7ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[36mCommontator::Thread Load (0.4ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 1 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[36mCACHE Lecture Load (0.0ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCommontator::Subscription Load (0.3ms)[0m  [1m[34mSELECT  `commontator_subscriptions`.* FROM `commontator_subscriptions` WHERE `commontator_subscriptions`.`subscriber_id` = 1 AND `commontator_subscriptions`.`subscriber_type` = 'User' AND `commontator_subscriptions`.`thread_id` = 1 ORDER BY `commontator_subscriptions`.`id` ASC LIMIT 1[0m
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/show.js.erb
+  [1m[36mCommontator::Comment Load (0.4ms)[0m  [1m[34mSELECT `commontator_comments`.* FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1 ORDER BY created_at ASC[0m
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/_list.html.erb (2.9ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/_reply.html.erb (11.0ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/_hide_show_links.js.erb (1.2ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/_show.html.erb (26.5ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/_show.js.erb (29.2ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/show.js.erb (31.9ms)
+Completed 200 OK in 55ms (Views: 37.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/commontator/threads/1/comments/new" for 127.0.0.1 at 2018-05-20 22:30:30 +0200
+Processing by Commontator::CommentsController#new as JS
+  Parameters: {"thread_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mCommontator::Thread Load (0.4ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`id` = 1 LIMIT 1[0m
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/new.js.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/_form.html.erb (18.0ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/new.js.erb (20.1ms)
+Completed 200 OK in 53ms (Views: 26.9ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/commontator/threads/1/comments" for 127.0.0.1 at 2018-05-20 22:30:41 +0200
+Processing by Commontator::CommentsController#create as JS
+  Parameters: {"utf8"=>"✓", "per_page"=>"", "comment"=>{"body"=>"comment 1"}, "commit"=>"Post Comment", "thread_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mCommontator::Thread Load (0.2ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`id` = 1 LIMIT 1[0m
+  [1m[36mLecture Load (0.2ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCommontator::Comment Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM `commontator_comments` WHERE `commontator_comments`.`body` = BINARY 'comment 1' AND `commontator_comments`.`creator_type` = 'User' AND `commontator_comments`.`creator_id` = 1 AND `commontator_comments`.`thread_id` = 1 AND `commontator_comments`.`deleted_at` IS NULL LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO `commontator_comments` (`creator_type`, `creator_id`, `thread_id`, `body`, `created_at`, `updated_at`) VALUES ('User', 1, 1, 'comment 1', '2018-05-20 20:30:41', '2018-05-20 20:30:41')[0m
+  [1m[35m (45.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCommontator::Subscription Load (0.3ms)[0m  [1m[34mSELECT `commontator_subscriptions`.* FROM `commontator_subscriptions` WHERE `commontator_subscriptions`.`thread_id` = 1[0m
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/create.js.erb
+  [1m[36mCommontator::Comment Load (0.4ms)[0m  [1m[34mSELECT `commontator_comments`.* FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1 ORDER BY created_at ASC[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1[0m
+  [1m[36mCommontator::Comment Load (0.5ms)[0m  [1m[34mSELECT  `commontator_comments`.* FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1 ORDER BY `commontator_comments`.`id` DESC LIMIT 1[0m
+  [1m[36mCACHE Commontator::Comment Load (0.0ms)[0m  [1m[34mSELECT  `commontator_comments`.* FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1 ORDER BY `commontator_comments`.`id` DESC LIMIT 1[0m  [["thread_id", 1], ["LIMIT", 1]]
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/_actions.html.erb (3.4ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/_votes.html.erb (1.2ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/_body.html.erb (24.7ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/_show.html.erb (37.4ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/_list.html.erb (63.5ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/_reply.html.erb (1.7ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/_hide_show_links.js.erb (0.6ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/_show.html.erb (78.7ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/threads/_show.js.erb (81.2ms)
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/comments/create.js.erb (84.1ms)
+Completed 200 OK in 152ms (Views: 88.6ms | ActiveRecord: 49.8ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to ActsAsVotableMigration (20180520203843)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to ActsAsVotableMigration (20180520203843)
+  [1m[35m (501.5ms)[0m  [1m[35mCREATE TABLE `votes` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `votable_type` varchar(255), `votable_id` bigint, `voter_type` varchar(255), `voter_id` bigint, `vote_flag` tinyint(1), `vote_scope` varchar(255), `vote_weight` int, `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL,  INDEX `index_votes_on_votable_type_and_votable_id`  (`votable_type`, `votable_id`),  INDEX `index_votes_on_voter_type_and_voter_id`  (`voter_type`, `voter_id`)) ENGINE=InnoDB[0m
+  [1m[35m (297.8ms)[0m  [1m[35mCREATE  INDEX `index_votes_on_voter_id_and_voter_type_and_vote_scope`  ON `votes` (`voter_id`, `voter_type`, `vote_scope`) [0m
+  [1m[35m (266.0ms)[0m  [1m[35mCREATE  INDEX `index_votes_on_votable_id_and_votable_type_and_vote_scope`  ON `votes` (`votable_id`, `votable_type`, `vote_scope`) [0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180520203843')[0m
+  [1m[35m (84.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 23:00:22 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  
+ActionController::RoutingError (undefined local variable or method `acts_as_votable' for #<Class:0x00007f1142641e50>
+Did you mean?  acts_as_commontable):
+  
+app/models/lecture.rb:5:in `<class:Lecture>'
+app/models/lecture.rb:1:in `<top (required)>'
+app/controllers/lectures_controller.rb:1:in `<top (required)>'
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 23:03:54 +0200
+  
+ActionController::RoutingError (undefined local variable or method `acts_as_votable' for #<Class:0x00007f1140adc0c0>
+Did you mean?  acts_as_commontable):
+  
+app/models/lecture.rb:5:in `<class:Lecture>'
+app/models/lecture.rb:1:in `<top (required)>'
+app/controllers/lectures_controller.rb:1:in `<top (required)>'
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 23:07:06 +0200
+  
+ActionController::RoutingError (undefined local variable or method `acts_as_votable' for #<Class:0x00007f114254a5d8>
+Did you mean?  acts_as_commontable):
+  
+app/models/lecture.rb:5:in `<class:Lecture>'
+app/models/lecture.rb:1:in `<top (required)>'
+app/controllers/lectures_controller.rb:1:in `<top (required)>'
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 23:08:27 +0200
+  
+ActionController::RoutingError (undefined local variable or method `acts_as_votable' for #<Class:0x00007f1142eb6608>
+Did you mean?  acts_as_commontable):
+  
+app/models/lecture.rb:5:in `<class:Lecture>'
+app/models/lecture.rb:1:in `<top (required)>'
+app/controllers/lectures_controller.rb:1:in `<top (required)>'
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 23:10:18 +0200
+  
+ActionController::RoutingError (undefined local variable or method `acts_as_votable' for #<Class:0x00007f1141e5b7e0>
+Did you mean?  acts_as_commontable):
+  
+app/models/lecture.rb:5:in `<class:Lecture>'
+app/models/lecture.rb:1:in `<top (required)>'
+app/controllers/lectures_controller.rb:1:in `<top (required)>'
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 23:14:11 +0200
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by LecturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  Rendering lectures/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mCommontator::Thread Load (0.3ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 1 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[36mCommontator::Subscription Load (0.2ms)[0m  [1m[34mSELECT  `commontator_subscriptions`.* FROM `commontator_subscriptions` WHERE `commontator_subscriptions`.`subscriber_id` = 1 AND `commontator_subscriptions`.`subscriber_type` = 'User' AND `commontator_subscriptions`.`thread_id` = 1 ORDER BY `commontator_subscriptions`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1[0m
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/shared/_thread.html.erb (30.9ms)
+  Rendered lectures/show.html.erb within layouts/application (76.9ms)
+Completed 200 OK in 619ms (Views: 593.6ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:14:24 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.2ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 180ms (Views: 177.1ms | ActiveRecord: 1.7ms)
+
+
+Started PUT "/links/1/like" for 127.0.0.1 at 2018-05-20 23:14:27 +0200
+  
+ActionController::RoutingError (uninitialized constant LinksController):
+  
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:78:in `controller_class'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:15:51 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (200.7ms)
+Completed 500 Internal Server Error in 207ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x00007f29881fd318>:0x00007f2989383b00>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__1203104018801318292_69908186268900'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__1203104018801318292_69908186268900'
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 23:16:33 +0200
+Processing by LecturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  Rendering lectures/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mCommontator::Thread Load (4.0ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 1 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[36mCommontator::Subscription Load (0.4ms)[0m  [1m[34mSELECT  `commontator_subscriptions`.* FROM `commontator_subscriptions` WHERE `commontator_subscriptions`.`subscriber_id` = 1 AND `commontator_subscriptions`.`subscriber_type` = 'User' AND `commontator_subscriptions`.`thread_id` = 1 ORDER BY `commontator_subscriptions`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1[0m
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/shared/_thread.html.erb (9.7ms)
+  Rendered lectures/show.html.erb within layouts/application (22.3ms)
+Completed 200 OK in 176ms (Views: 169.1ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:16:36 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 141ms (Views: 137.9ms | ActiveRecord: 1.2ms)
+
+
+Started PUT "/links/1/dislike" for 127.0.0.1 at 2018-05-20 23:16:38 +0200
+  
+ActionController::RoutingError (uninitialized constant LinksController):
+  
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:78:in `controller_class'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started PUT "/links/1/dislike" for 127.0.0.1 at 2018-05-20 23:19:18 +0200
+  
+ActionController::RoutingError (uninitialized constant LinksController):
+  
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:78:in `controller_class'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:19:23 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (208.5ms)
+Completed 500 Internal Server Error in 213ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `upvote_lecture_path' for #<#<Class:0x00007f29881fd318>:0x0000564c78e52728>
+Did you mean?  edit_lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to upvote_lecture_path(lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__1203104018801318292_47443222880880'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__1203104018801318292_47443222880880'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:20:40 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.5ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (234.0ms)
+Completed 500 Internal Server Error in 244ms (ActiveRecord: 3.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `upvote_lecture_path' for #<#<Class:0x00007f298a7491d0>:0x00007f298a79e018>
+Did you mean?  edit_lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to upvote_lecture_path(lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__1203104018801318292_69908196811440'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__1203104018801318292_69908196811440'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:20:56 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (201.0ms)
+Completed 500 Internal Server Error in 207ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x00007f298a7491d0>:0x00007f298a755188>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__1203104018801318292_69908196646440'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__1203104018801318292_69908196646440'
+Started GET "/lectures/new" for 127.0.0.1 at 2018-05-20 23:21:09 +0200
+Processing by LecturesController#new as HTML
+  Rendering lectures/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT `courses`.* FROM `courses` ORDER BY `courses`.`title` ASC[0m
+  Rendered lectures/_form.html.erb (23.3ms)
+  Rendered lectures/new.html.erb within layouts/application (26.1ms)
+Completed 200 OK in 253ms (Views: 250.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:21:12 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (177.6ms)
+Completed 500 Internal Server Error in 187ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x00007f298a7491d0>:0x00007f298a5d6460>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__1203104018801318292_69908195879060'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__1203104018801318292_69908195879060'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:22:10 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 168ms (Views: 166.6ms | ActiveRecord: 1.4ms)
+
+
+Started PUT "/links/1/like" for 127.0.0.1 at 2018-05-20 23:22:12 +0200
+  
+ActionController::RoutingError (uninitialized constant LinksController):
+  
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:78:in `controller_class'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started PUT "/links/1/dislike" for 127.0.0.1 at 2018-05-20 23:22:17 +0200
+  
+ActionController::RoutingError (uninitialized constant LinksController):
+  
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `const_get'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:269:in `block in constantize'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `each'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `inject'
+activesupport (5.1.6) lib/active_support/inflector/methods.rb:267:in `constantize'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:85:in `controller_class_for'
+actionpack (5.1.6) lib/action_dispatch/http/request.rb:78:in `controller_class'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:43:in `controller'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:29:in `serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `each'
+actionpack (5.1.6) lib/action_dispatch/journey/router.rb:33:in `serve'
+actionpack (5.1.6) lib/action_dispatch/routing/route_set.rb:844:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.5) lib/rack/etag.rb:25:in `call'
+rack (2.0.5) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.5) lib/rack/head.rb:12:in `call'
+rack (2.0.5) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.5) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.1.6) lib/active_record/migration.rb:556:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:26:in `block in call'
+activesupport (5.1.6) lib/active_support/callbacks.rb:97:in `run_callbacks'
+actionpack (5.1.6) lib/action_dispatch/middleware/callbacks.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:59:in `call'
+web-console (3.6.2) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.6.2) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.6.2) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.4) lib/puma/configuration.rb:225:in `call'
+puma (3.11.4) lib/puma/server.rb:632:in `handle_request'
+puma (3.11.4) lib/puma/server.rb:446:in `process_client'
+puma (3.11.4) lib/puma/server.rb:306:in `block in run'
+puma (3.11.4) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:23:38 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (1.9ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (198.6ms)
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x00007f298a7491d0>:0x00007f297c633dd0>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(@lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__1203104018801318292_69908078630220'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__1203104018801318292_69908078630220'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:28:39 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (227.8ms)
+Completed 500 Internal Server Error in 235ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x00007f298a7085e0>:0x00007f298a6f1d90>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(@lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__1203104018801318292_69908196458760'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__1203104018801318292_69908196458760'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:28:56 +0200
+  [1m[35m (0.6ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (302.5ms)
+Completed 500 Internal Server Error in 322ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x000055f36cba1b88>:0x000055f36cb995c8>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(@lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__428645488354419362_47251994710080'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__428645488354419362_47251994710080'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:31:07 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (196.0ms)
+Completed 500 Internal Server Error in 202ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x000055f36cba1b88>:0x000055f36be5af10>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(@lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__428645488354419362_47251987808840'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__428645488354419362_47251987808840'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:31:58 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (240.5ms)
+Completed 500 Internal Server Error in 245ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `lecture_like_path' for #<#<Class:0x000055f36cba1b88>:0x000055f36a8c8418>
+Did you mean?  lecture_path
+               lectures_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to lecture_like_path(@lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb__428645488354419362_47251977498800'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb__428645488354419362_47251977498800'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:32:35 +0200
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.7ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (332.2ms)
+Completed 500 Internal Server Error in 348ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `lecture_like_path' for #<#<Class:0x00005631bf1b3e50>:0x00005631bf1aaaa8>
+Did you mean?  lecture_path
+               lectures_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to lecture_like_path(@lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb___4071494994149899082_47385829745620'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb___4071494994149899082_47385829745620'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:33:44 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (202.9ms)
+Completed 500 Internal Server Error in 213ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x00005631bf1b3e50>:0x00005631be417418>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(@lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb___4071494994149899082_47385822667900'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb___4071494994149899082_47385822667900'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:35:38 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (359.6ms)
+Completed 500 Internal Server Error in 366ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x00005631bf1b3e50>:0x00005631bcf77670>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb___4071494994149899082_47385811800660'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb___4071494994149899082_47385811800660'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:35:54 +0200
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.6ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  Rendered lectures/index.html.erb within layouts/application (207.6ms)
+Completed 500 Internal Server Error in 225ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `like_lecture_path' for #<#<Class:0x00007f40d815b2b8>:0x00007f40d801f6d8>
+Did you mean?  new_lecture_path
+               lecture_path):
+    20:         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
+    21:         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    22:         <td>
+    23:         <%= link_to like_lecture_path(lecture), method: :put do %>
+    24:           Upvote
+    25:           <%= lecture.get_upvotes.size %>
+    26:         <% end %>
+  
+app/views/lectures/index.html.erb:23:in `block in _app_views_lectures_index_html_erb___3210756673385638886_69958239986240'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb___3210756673385638886_69958239986240'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:36:25 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 454ms (Views: 446.4ms | ActiveRecord: 4.6ms)
+
+
+Started PUT "/lectures/1/like" for 127.0.0.1 at 2018-05-20 23:36:28 +0200
+Processing by LecturesController#upvote as HTML
+  Parameters: {"authenticity_token"=>"+xBqIihBIXNR4U3CSxwX6uwLMXDAynul3q1SH6OOO8c1jlFjn5qlubsKt3jcWj9ip3O8VDNW/M1xYx5LgCCDIA==", "id"=>"1"}
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`voter_id` = 1 AND `votes`.`vote_scope` IS NULL AND `votes`.`voter_type` = 'User'[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO `votes` (`votable_type`, `votable_id`, `voter_type`, `voter_id`, `vote_flag`, `vote_weight`, `created_at`, `updated_at`) VALUES ('Lecture', 1, 'User', 1, 1, 1, '2018-05-20 21:36:28', '2018-05-20 21:36:28')[0m
+  [1m[35m (67.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/lectures/1
+Completed 302 Found in 130ms (ActiveRecord: 70.8ms)
+
+
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-20 23:36:28 +0200
+Processing by LecturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  Rendering lectures/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mCommontator::Thread Load (0.4ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 1 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[36mCommontator::Subscription Load (0.7ms)[0m  [1m[34mSELECT  `commontator_subscriptions`.* FROM `commontator_subscriptions` WHERE `commontator_subscriptions`.`subscriber_id` = 1 AND `commontator_subscriptions`.`subscriber_type` = 'User' AND `commontator_subscriptions`.`thread_id` = 1 ORDER BY `commontator_subscriptions`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1[0m
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/shared/_thread.html.erb (20.0ms)
+  Rendered lectures/show.html.erb within layouts/application (42.8ms)
+Completed 200 OK in 203ms (Views: 196.3ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:36:33 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (18.7ms)
+Completed 200 OK in 183ms (Views: 179.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:43:07 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (20.2ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 2.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `users' for #<Lecture:0x00007f40e206fb10>):
+    30:           <%= lecture.get_downvotes.size %>
+    31:         <% end %>
+    32: 
+    33:         <% if (!lecture.users.include? current_user) %>
+    34:         <td><%= link_to 'spam', spam_lecture_path(lecture) %></td>
+    35:         <% end %>
+    36:         
+  
+app/views/lectures/index.html.erb:33:in `block in _app_views_lectures_index_html_erb___3210756673385638886_69958323515680'
+app/views/lectures/index.html.erb:15:in `_app_views_lectures_index_html_erb___3210756673385638886_69958323515680'
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:43:36 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.9ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 133ms (Views: 130.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:44:06 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.5ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (8.8ms)
+Completed 200 OK in 135ms (Views: 133.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/lectures/1/spam" for 127.0.0.1 at 2018-05-20 23:44:10 +0200
+Processing by LecturesController#spam as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 1.9ms)
+
+
+  
+NoMethodError (undefined method `lectures' for #<User:0x00007f40e290eb40>):
+  
+app/controllers/lectures_controller.rb:18:in `spam'
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT GET_LOCK('7803298758599812440', 0)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to LecturesUsers (20180520214910)
+  [1m[35m (505.1ms)[0m  [1m[35mCREATE TABLE `lectures_users` (`lecture_id` bigint, `user_id` bigint,  INDEX `index_lectures_users_on_lecture_id`  (`lecture_id`),  INDEX `index_lectures_users_on_user_id`  (`user_id`)) ENGINE=InnoDB[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180520214910')[0m
+  [1m[35m (51.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT RELEASE_LOCK('7803298758599812440')[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:51:31 +0200
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 158ms (Views: 152.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:51:32 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (1.4ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (9.8ms)
+Completed 200 OK in 145ms (Views: 141.0ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/lectures/1/spam" for 127.0.0.1 at 2018-05-20 23:51:34 +0200
+Processing by LecturesController#spam as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO `lectures_users` (`lecture_id`, `user_id`) VALUES (1, 1)[0m
+  [1m[35m (43.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/lectures
+Completed 302 Found in 93ms (ActiveRecord: 48.0ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:51:34 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.2ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 133ms (Views: 131.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-20 23:52:11 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.6ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 ORDER BY `users`.`id` ASC LIMIT 1[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `users` INNER JOIN `lectures_users` ON `users`.`id` = `lectures_users`.`user_id` WHERE `lectures_users`.`lecture_id` = 1 AND `users`.`id` = 1 LIMIT 1[0m
+  Rendered lectures/index.html.erb within layouts/application (10.1ms)
+Completed 200 OK in 149ms (Views: 146.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-28 11:59:26 +0200
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (8.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (4.9ms)
+Completed 200 OK in 36ms (Views: 18.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-28 12:04:15 +0200
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (4.5ms)
+Completed 200 OK in 15ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-28 12:04:19 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.5ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-05-28 12:07:48 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (14.9ms)
+Completed 200 OK in 21ms (Views: 15.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-28 12:07:56 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (150.9ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (16.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (279.6ms)
+Completed 200 OK in 4079ms (Views: 3879.5ms | ActiveRecord: 198.3ms)
+
+
+Started GET "/lectures/1" for 127.0.0.1 at 2018-05-28 12:08:15 +0200
+Processing by LecturesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLecture Load (1.2ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  Rendering lectures/show.html.erb within layouts/application
+  [1m[36mCommontator::Thread Load (0.3ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 1 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  [1m[35m (4.0ms)[0m  [1m[34mSELECT COUNT(*) FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 1[0m
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/shared/_thread.html.erb (72.6ms)
+  Rendered lectures/show.html.erb within layouts/application (225.2ms)
+Completed 200 OK in 456ms (Views: 282.5ms | ActiveRecord: 111.3ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-28 12:08:17 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.8ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 168ms (Views: 165.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/lectures/1/edit" for 127.0.0.1 at 2018-05-28 12:08:20 +0200
+Processing by LecturesController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 1 LIMIT 1[0m
+  Rendering lectures/edit.html.erb within layouts/application
+  [1m[36mCourse Load (25.5ms)[0m  [1m[34mSELECT `courses`.* FROM `courses` ORDER BY `courses`.`title` ASC[0m
+  Rendered lectures/_form.html.erb (81.2ms)
+  Rendered lectures/edit.html.erb within layouts/application (90.5ms)
+Completed 200 OK in 277ms (Views: 248.4ms | ActiveRecord: 27.2ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-28 12:08:23 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.4ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (9.1ms)
+Completed 200 OK in 160ms (Views: 158.0ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-05-28 12:10:28 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.2ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 145ms (Views: 143.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-06-05 17:13:36 +0200
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.4ms)
+Completed 200 OK in 35ms (Views: 15.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-06-05 17:13:45 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.6ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (57.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (240.3ms)
+Completed 200 OK in 1016ms (Views: 955.1ms | ActiveRecord: 60.0ms)
+
+
+Started GET "/lectures/new" for 127.0.0.1 at 2018-06-05 17:13:53 +0200
+Processing by LecturesController#new as HTML
+  Rendering lectures/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT `courses`.* FROM `courses` ORDER BY `courses`.`title` ASC[0m
+  Rendered lectures/_form.html.erb (36.9ms)
+  Rendered lectures/new.html.erb within layouts/application (38.3ms)
+Completed 200 OK in 171ms (Views: 168.5ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/lectures" for 127.0.0.1 at 2018-06-05 17:13:58 +0200
+Processing by LecturesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"k0A3NDai/jna5V4+NcGlMp6g8t3nZ6w2+33Nvlquss3qPSJWrdhLDR5hAVft1fR2XMGuLNbrCd2GIAe5IvBKXw==", "lecture"=>{"content"=>"fsdfsdfsdf", "course_id"=>"1"}, "commit"=>"Create Lecture"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT  `courses`.* FROM `courses` WHERE `courses`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `lectures` (`content`, `course_id`, `created_at`, `updated_at`) VALUES ('fsdfsdfsdf', 1, '2018-06-05 15:13:58', '2018-06-05 15:13:58')[0m
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 2 LIMIT 1[0m
+  [1m[36mCommontator::Thread Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 2 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO `commontator_threads` (`commontable_type`, `commontable_id`, `created_at`, `updated_at`) VALUES ('Lecture', 2, '2018-06-05 15:13:58', '2018-06-05 15:13:58')[0m
+  [1m[35m (47.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/lectures/2
+Completed 302 Found in 199ms (ActiveRecord: 50.3ms)
+
+
+Started GET "/lectures/2" for 127.0.0.1 at 2018-06-05 17:13:58 +0200
+Processing by LecturesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 2 LIMIT 1[0m
+  Rendering lectures/show.html.erb within layouts/application
+  [1m[36mCommontator::Thread Load (0.4ms)[0m  [1m[34mSELECT  `commontator_threads`.* FROM `commontator_threads` WHERE `commontator_threads`.`commontable_id` = 2 AND `commontator_threads`.`commontable_type` = 'Lecture' LIMIT 1[0m
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT  `lectures`.* FROM `lectures` WHERE `lectures`.`id` = 2 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `commontator_comments` WHERE `commontator_comments`.`thread_id` = 2[0m
+  Rendered /home/hossam/.rvm/gems/ruby-2.5.1/gems/commontator-5.1.0/app/views/commontator/shared/_thread.html.erb (29.5ms)
+  Rendered lectures/show.html.erb within layouts/application (59.9ms)
+Completed 200 OK in 211ms (Views: 206.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/lectures" for 127.0.0.1 at 2018-06-05 17:17:24 +0200
+Processing by LecturesController#index as HTML
+  Rendering lectures/index.html.erb within layouts/application
+  [1m[36mLecture Load (0.3ms)[0m  [1m[34mSELECT `lectures`.* FROM `lectures`[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 1 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 2 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 1 AND `votes`.`vote_scope` IS NULL[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM `votes` WHERE `votes`.`votable_id` = 2 AND `votes`.`votable_type` = 'Lecture' AND `votes`.`vote_flag` = 0 AND `votes`.`vote_scope` IS NULL[0m
+  Rendered lectures/index.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 188ms (Views: 181.5ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/lectures/new" for 127.0.0.1 at 2018-06-05 17:17:26 +0200
+Processing by LecturesController#new as HTML
+  Rendering lectures/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT `courses`.* FROM `courses` ORDER BY `courses`.`title` ASC[0m
+  Rendered lectures/_form.html.erb (3.7ms)
+  Rendered lectures/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 133ms (Views: 130.9ms | ActiveRecord: 0.4ms)
+
+
